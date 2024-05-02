@@ -1,3 +1,4 @@
+---
 deployment:
   tasks:
     # Set the deployment path to your cPanel public_html directory.
