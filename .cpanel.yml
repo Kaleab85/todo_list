@@ -1,11 +1,13 @@
 ---
 deployment:
   tasks:
-    # Set the deployment path to your cPanel public_html directory.
     - export DEPLOYPATH=/home/tekatekocom/t.tekateko.com/
-    # Sync repository files to the deploy target path, excluding .git folder.
-    - /bin/rsync -aP --exclude '.git' ${REPOPATH}/ ${DEPLOYPATH}
-    # Set correct permissions.
-    - /bin/chmod 755 ${DEPLOYPATH}
-    - /bin/find ${DEPLOYPATH} -type d -exec /bin/chmod 755 '{}' \\;
-    - /bin/find ${DEPLOYPATH} -type f -exec /bin/chmod 644 '{}' \\;
+    - /bin/cp -R base $DEPLOYPATH
+    - /bin/cp -R staticfiles $DEPLOYPATH
+    - /bin/cp -R todo_list $DEPLOYPATH
+    - /bin/cp db.sqlite3 $DEPLOYPATH
+    - /bin/cp manage.py $DEPLOYPATH
+    - /bin/cp Procfile $DEPLOYPATH
+    - /bin/cp requirements.txt $DEPLOYPATH
+    - /bin/cp runtime.txt $DEPLOYPATH
+    
